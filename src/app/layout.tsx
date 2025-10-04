@@ -1,4 +1,7 @@
 import "./globals.css";
+import { Open_Sans } from "next/font/google";
+
+const openSans = Open_Sans({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -7,7 +10,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>
+      <body className={`antialiased ${openSans.className}`}>
         {children}
       </body>
     </html>
