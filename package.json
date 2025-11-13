@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.4.2",
+    "@fontsource-variable/merriweather": "^5.2.6",
     "@fontsource-variable/montserrat": "^5.2.8",
     "@tailwindcss/vite": "^4.1.17",
     "@types/react": "^19.2.3",
