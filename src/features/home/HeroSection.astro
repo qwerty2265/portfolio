@@ -1,33 +1,36 @@
 ---
 import TextType from "@/components/TextType.tsx";
+import Container from "@/components/ui/Container.astro";
 ---
 
 <section>
-  <div class="mb-8">
-    <h1 class="text-5xl xs:text-6xl sm:text-7xl">Hello, I'm <br> <span class="text-carmine-pink">Max Mun</span></h1>
-    <p class="text-4xl mb-2">And i'm a</p>
-    <TextType
-      client:load
-      text={["Full Stack Developer", "Front End Developer", "Back End Developer", "Freelancer" ]}
-      typingSpeed={75}
-      pauseDuration={1500}
-      showCursor={true}
-      cursorCharacter="|"
-      className="text-2xl font-serif font-light italic tracking-widest"
-    />
-  </div>
+  <Container>
+    <div class="mb-8">
+      <h1 class="text-5xl xs:text-6xl sm:text-7xl">Hello, I'm <br> <span class="text-carmine-pink">Max Mun</span></h1>
+      <p class="text-4xl mb-2">And i'm a</p>
+      <TextType
+        client:load
+        text={["Full Stack Developer", "Front End Developer", "Back End Developer", "Freelancer" ]}
+        typingSpeed={75}
+        pauseDuration={1500}
+        showCursor={true}
+        cursorCharacter="|"
+        className="text-2xl font-serif font-light italic tracking-widest"
+      />
+    </div>
 
-  <div>
-    <p class="text-lg text-cultured/80 max-w-2xl">
-      A web developer with passion for creating beautiful, functional, and user-friendly digital experiences. I constantly learn new technologies to stay at the forefront of web development - this portfolio site, for example, is built with 
-      <a 
-        href="https://astro.build/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="text-cultured underline underline-offset-2"
-      >
-        Astro.js
-      </a>
-    </p>
-  </div>
+    <div>
+      <p class="text-lg text-cultured/80 max-w-2xl">
+        A web developer with passion for creating beautiful, functional, and user-friendly digital experiences. I constantly learn new technologies to stay at the forefront of web development - this portfolio site, for example, is built with 
+        <a 
+          href="https://astro.build/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-cultured underline underline-offset-2"
+        >
+          Astro.js
+        </a>
+      </p>
+    </div>
+  </Container>
 </section>
