@@ -1,0 +1,57 @@
+---
+import Container from "@/components/ui/Container.astro";
+import FrontendIconsList from "./FrontendIconsList";
+import BackendIconsList from "./BackendIconsList";
+---
+
+<section class="bg-cultured text-charcoal-gray flex flex-col space-y-4">
+  <Container className="pt-8">
+    <h2 class="text-3xl sm:text-4xl">My Tech Stack</h2>
+  </Container>
+  
+  <Container>
+    <div>
+      <h3 class="text-2xl mb-4">Frontend</h3>
+      <ul class="list-disc list-inside">
+        <li>HTML5</li>
+        <li>CSS3 (Tailwind CSS, Sass)</li>
+        <li>JavaScript (ES6+)</li>
+        <li>TypeScript</li>
+        <li>React.js</li>
+        <li>Astro.js</li>
+      </ul>
+    </div>
+  </Container>
+
+  <div>
+    <FrontendIconsList client:load/>
+  </div>
+
+  <Container className="text-right">
+    <h3 class="text-2xl mb-4">Backend</h3>
+    <ul class="list-disc list-inside mb-8">
+      <li>Node.js</li>
+      <li>Express.js</li>
+      <li>RESTful APIs</li>
+      <li>GraphQL</li>
+      <li>PostgreSQL</li>
+      <li>MongoDB</li>
+      <li>MySQL</li>
+      <li>SQLite</li>
+    </ul>
+  </Container>
+
+  <div>
+    <BackendIconsList client:load/>
+  </div>
+
+  <Container>
+    <h3 class="text-2xl mb-4">Tools & Platforms</h3>
+    <ul class="list-disc list-inside mb-8">
+      <li>Git & GitHub</li>
+      <li>Docker</li>
+      <li>CI/CD (GitHub Actions, Travis CI)</li>
+      <li>AWS & Heroku</li>
+    </ul>
+  </Container>
+</section>
