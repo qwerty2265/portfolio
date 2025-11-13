@@ -1,1 +1,12 @@
-// init
+---
+import Follower from '@/components/Follower';
+import HeroSection from '@/features/home/HeroSection.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Max Mun - Portfolio">
+  <Follower client:load />
+  <main class="container mx-auto px-4 py-8">
+    <HeroSection />
+  </main>
+</BaseLayout>
