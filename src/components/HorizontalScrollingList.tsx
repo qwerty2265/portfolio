@@ -6,10 +6,17 @@ interface HorizontalScrollingListProps {
   className?: string;
   listClassName?: string;
   children: ReactNode;
+  speed?: number;
   direction?: "left-to-right" | "right-to-left";
 }
 
-export default function HorizontalScrollingList({ children, direction = "left-to-right", className, listClassName }: HorizontalScrollingListProps) {
+export default function HorizontalScrollingList({ 
+  children, 
+  direction = "left-to-right", 
+  className, 
+  listClassName, 
+  speed = 50 
+}: HorizontalScrollingListProps) {
   const listRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
@@ -17,7 +24,6 @@ export default function HorizontalScrollingList({ children, direction = "left-to
 
     const list = listRef.current;
     const listWidth = list.scrollWidth / 2;
-    const speed = 50;
     const duration = listWidth / speed;
 
     if (direction === "right-to-left") {
