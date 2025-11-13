@@ -1,3 +1,9 @@
-<div class="px-4 md:px-8 lg:px-12">
+---
+import { cn } from "@/utils/styles";
+
+const { className } = Astro.props;
+---
+
+<div class={cn("px-4 md:px-8 lg:px-12 py-4", className)}>
   <slot />
 </div>
