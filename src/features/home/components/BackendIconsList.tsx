@@ -1,7 +1,7 @@
 import { SiAuth0, SiDjango, SiDocker, SiExpress, SiFirebase, SiGo, SiJavascript, SiJsonwebtokens, SiLaravel, SiMysql, SiNodedotjs, SiPhp, SiPostgresql, SiPrisma, SiPython, SiSqlite, SiSupabase, SiTypescript } from "react-icons/si";
 import { DiMongodb } from "react-icons/di";
 import HorizontalScrollingList from "@/components/HorizontalScrollingList";
-import { ICON_CLASSES } from "./constants";
+import { ICON_CLASSES } from "../constants";
 
 const icons = (
   <>

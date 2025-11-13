@@ -1,6 +1,6 @@
 import { SiAstro, SiCss3, SiEslint, SiFigma, SiHtml5, SiJavascript, SiJest, SiMui, SiNetlify, SiNextdotjs, SiNpm, SiPrettier, SiRadixui, SiReact, SiReactquery, SiRedux, SiRender, SiSass, SiTailwindcss, SiTypescript, SiVercel, SiYarn } from "react-icons/si";
 import HorizontalScrollingList from "@/components/HorizontalScrollingList";
-import { ICON_CLASSES } from "./constants";
+import { ICON_CLASSES } from "../constants";
 
 const icons = (
   <>
