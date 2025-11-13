@@ -1,0 +1,18 @@
+---
+import { cn } from "@/utils/styles";
+
+interface Props {
+  translateDirection?: "left-to-right" | "right-to-left";
+  className?: string;
+}
+
+const { translateDirection = "left-to-right", className } = Astro.props;
+---
+
+<li class={cn(
+  "w-full transition-all duration-300 ease-out",
+  translateDirection === "left-to-right" ? "hover:translate-x-3" : "hover:-translate-x-3", 
+  className
+)}>
+  <slot />
+</li>
