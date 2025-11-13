@@ -2,4 +2,8 @@
 
 @theme {
   --font-sans: 'Montserrat Variable', 'sans-serif';
+
+  --color-charcoal-gray: #121212;
+  --color-cultured: #F5F5F5;
+  --color-carmine-pink: #E54B4B;
 }
