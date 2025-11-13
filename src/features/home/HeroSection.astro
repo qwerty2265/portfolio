@@ -7,7 +7,7 @@ import Container from "@/components/ui/Container.astro";
   <Container className="pb-10">
     <div class="mb-8">
       <h1 class="text-5xl xs:text-6xl sm:text-7xl">Hello, I'm <br> <span class="text-carmine-pink">Max Mun</span></h1>
-      <p class="text-4xl mb-2">And i'm a</p>
+      <p class="text-2xl mb-1">And i'm a</p>
       <TextType
         client:load
         text={["Full Stack Developer", "Front End Developer", "Back End Developer", "Freelancer" ]}
@@ -15,7 +15,8 @@ import Container from "@/components/ui/Container.astro";
         pauseDuration={1500}
         showCursor={true}
         cursorCharacter="|"
-        className="text-2xl font-serif font-light italic tracking-widest"
+        className="text-2xl font-serif font-light italic tracking-wider"
+        cursorClassName="not-italic"
       />
     </div>
 
