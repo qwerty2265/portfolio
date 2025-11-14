@@ -11,7 +11,7 @@ const { translateDirection = "left-to-right", className } = Astro.props;
 
 <li class={cn(
   "w-full transition-all duration-300 ease-out",
-  translateDirection === "left-to-right" ? "hover:translate-x-3" : "hover:-translate-x-3", 
+  translateDirection === "left-to-right" ? "hover:translate-x-3 hover:before:content-['•']" : "hover:-translate-x-3 hover:after:content-['•']", 
   className
 )}>
   <slot />
