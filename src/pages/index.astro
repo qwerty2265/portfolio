@@ -1,6 +1,7 @@
 ---
 import Follower from '@/components/Follower';
 import HeroSection from '@/features/home/components/HeroSection.astro';
+import StatsSection from '@/features/home/components/StatsSection.astro';
 import TechStackSection from '@/features/home/components/TechStackSection.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 ---
@@ -9,6 +10,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
   <Follower client:load />
   <main class="py-8">
     <HeroSection />
+    <StatsSection />
     <TechStackSection />
   </main>
 </BaseLayout>
