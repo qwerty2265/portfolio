@@ -24,34 +24,44 @@ const uniqueId = `stars-${Math.random().toString(36).slice(2, 9)}`;
     const starCount = parseInt(canvasElement.dataset.starCount || '200', 10);
     const ctx = canvasElement.getContext('2d')!;
 
+    let stars: { x: number; y: number; radius: number; opacity: number }[] = [];
+    let animations: gsap.core.Tween[] = [];
+
+    function createStars() {
+      animations.forEach(anim => anim.kill());
+      animations = [];
+      stars = [];
+
+      for (let i = 0; i < starCount; i++) {
+        stars.push({
+          x: Math.random() * canvasElement.width,
+          y: Math.random() * canvasElement.height,
+          radius: Math.random() * 1.5,
+          opacity: Math.random()
+        });
+      }
+
+      stars.forEach((star) => {
+        const anim = gsap.to(star, {
+          opacity: Math.random(),
+          duration: 1 + Math.random() * 2,
+          repeat: -1,
+          yoyo: true,
+          ease: "power1.inOut",
+          delay: Math.random() * 2
+        });
+        animations.push(anim);
+      });
+    }
+
     function resizeCanvas() {
       canvasElement.width = canvasElement.offsetWidth;
       canvasElement.height = canvasElement.offsetHeight;
+      createStars();
     }
+    
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
-
-    const stars: { x: number; y: number; radius: number; opacity: number }[] = [];
-
-    for (let i = 0; i < starCount; i++) {
-      stars.push({
-        x: Math.random() * canvasElement.width,
-        y: Math.random() * canvasElement.height,
-        radius: Math.random() * 1.5,
-        opacity: Math.random()
-      });
-    }
-
-    stars.forEach((star, i) => {
-      gsap.to(star, {
-        opacity: Math.random(),
-        duration: 1 + Math.random() * 2,
-        repeat: -1,
-        yoyo: true,
-        ease: "power1.inOut",
-        delay: Math.random() * 2
-      });
-    });
 
     function drawStars() {
       ctx.clearRect(0, 0, canvasElement.width, canvasElement.height);
