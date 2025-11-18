@@ -1,0 +1,9 @@
+---
+import { cn } from "@/utils/styles";
+
+  const { className } = Astro.props;
+---
+
+<span class={cn("text-xs px-2 py-1 bg-charleston-green rounded-lg text-spanish-gray", className)}>
+  <slot />
+</span>
