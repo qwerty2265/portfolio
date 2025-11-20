@@ -1,0 +1,72 @@
+---
+import { Image } from 'astro:assets';
+import type { Project } from '../types';
+import Badge from '@/components/ui/Badge.astro';
+import Card from './ui/Card.astro';
+
+interface Props {
+  project: Project
+}
+
+const {
+  project
+} = Astro.props;
+---
+
+<Card>
+  <div class="bg-cultured/20 border h-56 border-cultured rounded-2xl mb-4 overflow-hidden">
+    {project.image && (
+      typeof project.image === 'string' ? (
+        <img src={project.image} alt={project.title} class="w-full h-full object-cover" />
+      ) : (
+        <Image src={project.image} alt={project.title} class="w-full h-full object-cover" />
+      )
+    )}
+  </div>  
+
+  <div class="mb-4">
+    <h3 class="mb-1">{project.title}</h3>
+    <p class="text-sm text-spanish-gray">{project.description}</p>
+  </div>
+
+  {project.tags.length > 0 && (
+    <div class="flex flex-wrap gap-2 mb-4">
+      {project.tags.map(tag => (
+        <Badge class="text-xs px-2 py-1 bg-cultured/10 rounded-lg text-spanish-gray">
+          {tag}
+        </Badge>
+      ))}
+    </div>
+  )}
+
+  <div class="flex flex-wrap gap-2">
+    <a 
+      class="border border-cultured rounded-2xl px-4 py-2 hover:border-carmine-pink hover:bg-carmine-pink/20 transition-all duration-300" 
+      href={project.detailsUrl ? project.detailsUrl : "https://example.com"}
+    >
+      More Info
+    </a>
+  
+    {project.githubUrl && (
+      <a 
+        class="border border-cultured rounded-2xl px-4 py-2 hover:border-carmine-pink hover:bg-carmine-pink/20 transition-all duration-300" 
+        href={project.githubUrl} 
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a>
+    )}
+
+    {project.liveUrl && (
+      <a 
+        class="border border-cultured rounded-2xl px-4 py-2 hover:border-carmine-pink hover:bg-carmine-pink/20 transition-all duration-300" 
+        href={project.liveUrl} 
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
+        Live Site
+      </a>
+    )}
+  </div>
+</Card>
