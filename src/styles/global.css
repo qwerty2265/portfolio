@@ -11,4 +11,6 @@
   --color-carmine-pink: #E54B4B;
 
   --breakpoint-xs: 30rem;
+
+  --radius-inherit: inherit;
 }
