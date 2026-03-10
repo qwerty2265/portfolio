@@ -1,0 +1,108 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className = "" } = Astro.props;
+---
+
+<div class={`wrapper-3d transform-3d relative rounded-4xl ${className}`}>
+    <slot />
+  <div class="glare mix-blend-overlay absolute inset-0 pointer-events-none rounded-4xl opacity-0"></div>
+</div>
+
+<script>
+  import { gsap } from 'gsap';
+
+  document.querySelectorAll<HTMLElement>(".wrapper-3d").forEach(($wrapper) => {
+    let bounds: {
+      x: number;
+      y: number;
+      width: number;
+      height: number;
+    };
+    let lastShadowOffsetX = 0;
+    let lastShadowOffsetY = 0;
+    let lastShadowBlur = 0;
+
+    function moveToMouse(e: MouseEvent) {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+      const leftX = mouseX - bounds.x;
+      const topY = mouseY - bounds.y;
+      const center = {
+        x: leftX - bounds.width / 2,
+        y: topY - bounds.height / 2
+      };
+
+      const distance = Math.sqrt(center.x ** 2 + center.y ** 2);
+      const rotationX = center.y / 70;
+      const rotationY = -center.x / 70;
+
+      const shadowOffsetX = -rotationY * 2;
+      const shadowOffsetY = rotationX * 2;
+      const shadowBlur = 20 + distance / 120;
+
+      lastShadowOffsetX = shadowOffsetX;
+      lastShadowOffsetY = shadowOffsetY;
+      lastShadowBlur = shadowBlur;
+
+      gsap.to($wrapper, {
+        scale: 1.025,
+        rotationX: rotationX,
+        rotationY: rotationY,
+        transformPerspective: 1000,
+        ease: "power2.out",
+        duration: 0.3,
+        boxShadow: `${shadowOffsetX}px ${shadowOffsetY}px ${shadowBlur}px 6px rgba(72, 65, 56, .4)`
+      });
+
+      gsap.to($wrapper.querySelector(".glare"), {
+        opacity: 1,
+        backgroundImage: `
+          radial-gradient(
+            circle at
+            ${center.x * 2 + bounds.width / 2}px
+            ${center.y * 2 + bounds.height / 2}px,
+            rgba(255, 255, 255, 0.33),
+            rgba(0, 0, 0, 0.06)
+          )
+        `
+      });
+    }
+
+    $wrapper.addEventListener("mouseenter", () => {
+      bounds = $wrapper.getBoundingClientRect();
+      document.addEventListener("mousemove", moveToMouse);
+    });
+
+    $wrapper.addEventListener("mouseleave", () => {
+      document.removeEventListener("mousemove", moveToMouse);
+
+      gsap.to($wrapper, {
+        scale: 1,
+        rotationX: 0,
+        rotationY: 0,
+        duration: 0.6,
+        ease: "power2.out"
+      });
+
+      gsap.to($wrapper, {
+        boxShadow: `${lastShadowOffsetX}px ${lastShadowOffsetY}px ${lastShadowBlur}px 0 rgba(72, 65, 56, .4)`,
+        duration: 0.3,
+        ease: "power3.out",
+        onComplete: () => {
+          gsap.to($wrapper, {
+            boxShadow: `0px 0px ${lastShadowBlur}px 0 rgba(0, 0, 0, 0)`,
+            duration: 1.2
+          });
+        }
+      });
+
+      gsap.to($wrapper.querySelector(".glare"), {
+        opacity: 0,
+        duration: 0.6
+      });
+    });
+  });
+</script>
