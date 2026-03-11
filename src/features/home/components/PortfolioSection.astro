@@ -1,0 +1,31 @@
+---
+import Container from "@/components/ui/Container.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import { getCollection } from 'astro:content';
+import StarryBackground from "@/components/StarryBackground.astro";
+import FloatingWrapper from "@/components/ui/FloatingWrapper.astro";
+
+const projects = await getCollection('project');
+---
+
+<section class="bg-charcoal-gray relative overflow-hidden">
+  <StarryBackground />
+  
+  <Container className="pt-8 pb-10 relative z-10">
+    <h2 class="text-center font-serif italic tracking-wider text-3xl sm:text-4xl mb-8">
+      Some of My Projects
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      {projects.map(project => {
+        return (
+          <FloatingWrapper>
+            <ProjectCard
+              project={{ ...project.data, id: project.id }}
+            />
+          </FloatingWrapper>
+        );
+      })}
+    </div>
+  </Container>
+</section>
