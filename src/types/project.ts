@@ -15,4 +15,5 @@ export type ProjectData = z.infer<typeof projectSchema>;
 
 export interface Project extends ProjectData {
   id: string;
+  body?: string;
 }
