@@ -40,12 +40,12 @@ const {
   )}
 
   <div class="flex flex-wrap gap-2">
-    <a 
-      class="border border-cultured rounded-2xl px-4 py-2 hover:border-carmine-pink hover:bg-carmine-pink/20 transition-all duration-300" 
-      href={project.detailsUrl ? project.detailsUrl : "https://example.com"}
+    <button
+      class="border border-cultured rounded-2xl px-4 py-2 hover:border-carmine-pink hover:bg-carmine-pink/20 transition-all duration-300 cursor-pointer" 
+      data-project={JSON.stringify(project)}
     >
       More Info
-    </a>
+    </button>
   
     {project.githubUrl && (
       <a 
@@ -70,3 +70,13 @@ const {
     )}
   </div>
 </Card>
+
+<script>
+  import { activeProjectModal } from '../stores/modalStore';
+  document.querySelectorAll('[data-project]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const project = JSON.parse((e.currentTarget as HTMLElement).dataset.project!);
+      activeProjectModal.set(project);
+    });
+  });
+</script>
