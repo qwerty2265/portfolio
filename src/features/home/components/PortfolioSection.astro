@@ -4,6 +4,7 @@ import ProjectCard from "@/components/ProjectCard.astro";
 import { getCollection } from 'astro:content';
 import StarryBackground from "@/components/StarryBackground.astro";
 import FloatingWrapper from "@/components/ui/FloatingWrapper.astro";
+import ProjectModal from "@/components/ProjectModal";
 
 const projects = await getCollection('project');
 ---
@@ -21,7 +22,7 @@ const projects = await getCollection('project');
         return (
           <FloatingWrapper>
             <ProjectCard
-              project={{ ...project.data, id: project.id }}
+              project={{ ...project.data, id: project.id, body: project.body }}
             />
           </FloatingWrapper>
         );
@@ -29,3 +30,5 @@ const projects = await getCollection('project');
     </div>
   </Container>
 </section>
+
+<ProjectModal client:only />
