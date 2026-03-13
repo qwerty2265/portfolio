@@ -1,0 +1,1 @@
+export const badgeBaseClass = "text-xs px-2 py-1 bg-charleston-green rounded-lg text-spanish-gray";
