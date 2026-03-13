@@ -39,7 +39,7 @@ export default function Modal({ isOpen = false, onClose, children, className }: 
     >
       <div 
         className={twMerge(
-          "bg-charcoal-gray border border-cultured rounded-4xl p-4 max-w-lg w-full relative ml-4 mr-4 h-[80%] overflow-y-auto",
+          "bg-charcoal-gray border border-cultured rounded-4xl p-4 max-w-lg w-full relative ml-4 mr-4 h-[80%] flex flex-col",
           "transition-all duration-300",
           isOpen ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0",
           className
@@ -48,7 +48,7 @@ export default function Modal({ isOpen = false, onClose, children, className }: 
         aria-labelledby="modal-title"
         aria-describedby="modal-description"
       >
-        <div className="flex w-full justify-end mb-4">
+        <div className="flex w-full justify-end mb-3">
           <button 
             onClick={onClose}
             className="relative right-0 border border-cultured rounded-full py-2 px-3.5 cursor-pointer hover:border-carmine-pink hover:bg-carmine-pink/20 transition-all duration-300"
@@ -57,7 +57,9 @@ export default function Modal({ isOpen = false, onClose, children, className }: 
             ✕            
           </button>
         </div>
-        {children}
+        <div className="relative py-1 rounded-2xl overflow-y-auto flex-1 min-h-0">
+          {children}
+        </div>
       </div>
     </div>,
     portalRoot
