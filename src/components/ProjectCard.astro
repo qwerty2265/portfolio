@@ -30,7 +30,7 @@ const {
   </div>
 
   {project.tags.length > 0 && (
-    <div class="mt-auto flex flex-wrap gap-2 mb-4">
+    <div class="flex flex-wrap gap-2 mb-4">
       {project.tags.map(tag => (
         <Badge class="text-xs px-2 py-1 bg-cultured/10 rounded-lg text-spanish-gray">
           {tag}
@@ -39,7 +39,7 @@ const {
     </div>
   )}
 
-  <div class="flex flex-wrap gap-2">
+  <div class="mt-auto flex flex-wrap gap-2">
     <button
       class="border border-cultured rounded-2xl px-4 py-2 hover:border-carmine-pink hover:bg-carmine-pink/20 transition-all duration-300 cursor-pointer" 
       data-project={JSON.stringify(project)}
