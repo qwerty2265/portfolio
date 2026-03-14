@@ -13,7 +13,7 @@ const {
 } = Astro.props;
 ---
 
-<Card>
+<Card className="h-full flex flex-col">
   <div class="bg-cultured/20 border h-56 border-cultured rounded-2xl mb-4 overflow-hidden">
     {project.image && (
       typeof project.image === 'string' ? (
@@ -30,7 +30,7 @@ const {
   </div>
 
   {project.tags.length > 0 && (
-    <div class="flex flex-wrap gap-2 mb-4">
+    <div class="mt-auto flex flex-wrap gap-2 mb-4">
       {project.tags.map(tag => (
         <Badge class="text-xs px-2 py-1 bg-cultured/10 rounded-lg text-spanish-gray">
           {tag}
