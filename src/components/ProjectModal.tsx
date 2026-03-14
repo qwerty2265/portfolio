@@ -31,7 +31,7 @@ export default function ProjectModal() {
           <hr className="border-cultured/20 mb-4" />
 
           {project.body && (
-            <div className="px-2 [&_img]:my-4 [&_img]:rounded-lg [&_img]:w-full [&_p]:mb-4 [&_p]:last:mb-0">
+            <div className="px-2 [&_img]:my-4 [&_img]:rounded-lg [&_img]:w-full [&_p]:mb-4 [&_p]:last:mb-0 [&_a]:text-cultured [&_a]:underline">
               <ReactMarkdown>{project.body}</ReactMarkdown>
             </div>
           )}
