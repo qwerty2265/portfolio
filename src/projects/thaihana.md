@@ -2,7 +2,7 @@
 title: "Thaihana"
 description: "eCommerce website for a Thai medicine store with product catalog, shopping cart, search functionality, and authentications"
 image: "/projects/thaihana/homepage.webp"
-tags: ["Next.js", "Typescript", "Go", "PostgreSQL", "Zustand"]
+tags: ["Next.js", "Typescript", "TailwindCSS", "Zustand", "Go", "go-chi", "GORM", "PostgreSQL" ]
 ---
 
 One of my first projects, where I tested my skills in building a full-stack eCommerce website from scratch. This project allowed me to gain valuable experience in developing a complete web application, including both frontend and backend development
