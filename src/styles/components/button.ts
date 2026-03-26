@@ -1,0 +1,1 @@
+export const buttonBaseClass = "cursor-pointer border text-cultured border-cultured rounded-2xl px-4 py-2 hover:border-carmine-pink hover:bg-carmine-pink/20 transition-all duration-300";
