@@ -1,0 +1,18 @@
+---
+import { cn } from "@/utils/styles";
+import type { HTMLAttributes } from "astro/types";
+import { inputBaseClass } from "@/styles/components/input";
+
+interface Props extends HTMLAttributes<"input"> {
+  className?: string;
+}
+
+const { className, ...inputProps } = Astro.props;
+---
+
+<input class={cn(
+  className,
+  inputBaseClass
+  )} {...inputProps}>
+  <slot />
+</input>

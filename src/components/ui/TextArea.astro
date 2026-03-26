@@ -1,0 +1,49 @@
+---
+import { cn } from "@/utils/styles";
+import type { HTMLAttributes } from "astro/types";
+import { inputBaseClass } from "@/styles/components/input";
+
+const MAX_LENGTH = 1000;
+
+interface Props extends HTMLAttributes<"textarea"> {
+  className?: string;
+}
+
+const { className, ...textAreaProps } = Astro.props;
+---
+
+<div class="relative">
+  <textarea class={cn(
+    className,
+    inputBaseClass,
+    "transition-colors resize-none w-full h-64 pb-9"
+    )}
+    maxlength={MAX_LENGTH} 
+    {...textAreaProps}
+  >
+  </textarea>
+  
+  <div class="absolute bottom-3 right-5 text-sm text-right mt-1 text-cultured opacity-70">
+    <span id="char-count">0</span>/{MAX_LENGTH}
+  </div>
+</div>
+
+<script define:vars={{ MAX_LENGTH }}>
+  const textArea = document.querySelector("textarea");
+  const counter = document.getElementById("char-count");
+
+  if (textArea && counter) {
+    let currentLength = textArea.value.length.toString();
+    counter.textContent = currentLength;
+
+    textArea.addEventListener("input", () => {
+      currentLength = textArea.value.length.toString();
+      counter.textContent = currentLength;
+
+      if (textArea.value.length > MAX_LENGTH) {
+        textArea.value = textArea.value.substring(0, MAX_LENGTH);
+        counter.textContent = MAX_LENGTH.toString();
+      }
+    });
+  }
+</script>
