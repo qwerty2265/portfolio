@@ -1,0 +1,24 @@
+---
+const LINKS = [
+  { name: "Stack", href: "#tech-stack" },
+  { name: "Portfolio", href: "#portfolio" },
+];
+---
+
+<header class="lg:text-lg z-50 md:absolute top-0 w-full px-4 py-4 md:px-8 bg-transparent border-b sm:border-none border-spanish-gray/20 flex items-center">
+  <nav class="mr-auto ml-auto md:mr-0">
+    <ul class="flex items-center divide-x divide-solid divide-spanish-gray/30">
+      {LINKS.map((link) => (
+        <li class="px-3 first:pl-0 last:pr-0">
+          <a
+            class="text-spanish-gray hover:text-carmine-pink hover:underline transition-colors duration-200" 
+            href={link.href} 
+            id={"header-link-" + link.href.substring(1)}
+          >
+            {link.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
